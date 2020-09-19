@@ -8,7 +8,7 @@ import javax.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.productservice.entity.ProductCatalog;
+import com.productservice.entity.Product;
 import com.productservice.repo.ProductServiceRepository;
 import com.productservice.service.ProductService;
 import com.productservice.util.ProductException;
@@ -28,7 +28,7 @@ public class ProductServiceImpl implements ProductService {
 	 *
 	 */
 	@Override
-	public List<ProductCatalog> getProductList() throws ProductException {
+	public List<Product> getProductList() throws ProductException {
 		return serviceRepository.findAll();
 	}
 
@@ -36,9 +36,9 @@ public class ProductServiceImpl implements ProductService {
 	 *
 	 */
 	@Override
-	public ProductCatalog getProductById(Long productId) throws ProductException {
+	public Product getProductById(Long productId) throws ProductException {
 
-		Optional<ProductCatalog> result = serviceRepository.findById(productId);
+		Optional<Product> result = serviceRepository.findById(productId);
 		if (result.isPresent())
 			return result.get();
 		else
@@ -47,7 +47,7 @@ public class ProductServiceImpl implements ProductService {
 	}
 
 	@Override
-	public void addProduct(List<ProductCatalog> productList)  {
+	public void addProduct(List<Product> productList)  {
 		serviceRepository.saveAll(productList);
 	}
 

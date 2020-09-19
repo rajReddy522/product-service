@@ -1,8 +1,9 @@
 package com.productservice.service;
 
+
 import java.util.List;
 
-import com.productservice.entity.ProductCatalog;
+import com.productservice.entity.Product;
 import com.productservice.util.ProductException;
 
 /**
@@ -11,11 +12,11 @@ import com.productservice.util.ProductException;
  */
 public interface ProductService {
 
-	List<ProductCatalog> getProductList() throws ProductException;
+	List<Product> getProductList() throws ProductException;
 	
-	ProductCatalog getProductById(Long productId) throws ProductException;
+	Product getProductById(Long productId) throws ProductException;
 	
-	void addProduct(List<ProductCatalog> productList);
+	void addProduct(List<Product> productList);
 	
 	void deleteProductById(Long productId) throws ProductException;
 }

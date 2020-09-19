@@ -35,12 +35,15 @@ public class ProdGlobalException extends ResponseEntityExceptionHandler {
     public ResponseEntity handle(final ConstraintViolationException constraintViolationException) {
         Set<ConstraintViolation<?>> violations = constraintViolationException.getConstraintViolations();
         String errorMessage = "";
+        ProdException exception;
         if (!violations.isEmpty()) {
             StringBuilder builder = new StringBuilder();
             violations.forEach(violation -> builder.append(" " + violation.getMessage()));
             errorMessage = builder.toString();
+           // exception = new ProdException(errorMessage, constraintViolationException.getMessage());
         } else {
             errorMessage = "ConstraintViolationException occured.";
+           // exception = new ProdException(errorMessage, constraintViolationException.getMessage());
         }
         return new ResponseEntity<>(errorMessage, HttpStatus.BAD_REQUEST);
     }

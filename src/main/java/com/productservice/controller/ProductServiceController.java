@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.productservice.entity.ProductCatalog;
+import com.productservice.entity.Product;
 import com.productservice.service.ProductService;
 import com.productservice.util.ProductException;
 
@@ -31,7 +31,7 @@ public class ProductServiceController {
 	 * @throws Exception
 	 */
 	@GetMapping(path = "/products", produces = "application/json")
-	public List<ProductCatalog> getProducts() throws ProductException {
+	public List<Product> getProducts() throws ProductException {
 		return productService.getProductList();
 	}
 
@@ -41,7 +41,7 @@ public class ProductServiceController {
 	 * @throws Exception
 	 */
 	@GetMapping(path = "/product/{productId}", produces = "application/json")
-	public ProductCatalog getProductById(@PathVariable Long productId) throws ProductException {
+	public Product getProductById(@PathVariable Long productId) throws ProductException {
 		return productService.getProductById(productId);
 	}
 
@@ -50,7 +50,7 @@ public class ProductServiceController {
 	 * @throws Exception
 	 */
 	@PostMapping(path = "/addProduct", consumes = "application/json")
-	public void addProduct(@Valid @RequestBody List<ProductCatalog> productList) {
+	public void addProduct( @RequestBody List<Product> productList) {
 		productService.addProduct(productList);
 	}
 
